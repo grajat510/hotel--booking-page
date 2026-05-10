@@ -1,14 +1,59 @@
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+@import "tailwindcss";
+
+@theme {
+  --color-ss-green: #4f7134;
+  --color-ss-green-dark: #3d5a26;
+  --color-ss-green-soft: #eef3e6;
+  --color-ss-gold: #f2d98c;
+  --color-ss-gold-dark: #a88830;
+  --color-ss-gold-deep: #9a7820;
+  --color-ss-cream: #f5f3ec;
+  --color-ss-text: #1a1a1a;
+  --color-ss-text-mute: #6a6a66;
+  --color-ss-text-light: #9a9a96;
+  --color-ss-red: #a32d2d;
+  --color-ss-red-soft: #fcebeb;
+  --color-ss-amber: #9a7820;
+  --color-ss-amber-soft: #fffbf0;
+  --color-ss-success: #3d5a26;
+  --color-ss-success-soft: #eef3e6;
+  --color-gz-lime: #c6f432;
+  --color-gz-lime-deep: #9bc81e;
+  --color-gz-purple: #7b3ff2;
+  --color-gz-purple-deep: #5b1fe0;
+  --color-gz-pink: #ff4fa3;
+  --color-gz-pink-deep: #e91e80;
+  --color-gz-orange: #ff7a1a;
+  --color-gz-orange-deep: #e55a00;
+  --color-gz-yellow: #ffd60a;
+  --color-gz-red: #ff3b5c;
+  --color-brand-navy: #08273b;
+  --color-brand-gold: #ffb514;
+  --color-brand-crimson: #841a1a;
+  --color-brand-maroon: #822049;
+  --radius-ss-sm: 8px;
+  --radius-ss-md: 12px;
+  --radius-ss-lg: 16px;
+  --radius-ss-xl: 20px;
+  --breakpoint-booking: 900px;
+  --breakpoint-booking-lg: 1180px;
+}
+
+@layer base {
+* {
+  @apply box-border m-0 p-0;
+  -webkit-tap-highlight-color: transparent;
+}
   /* Mobile only: prevent horizontal scroll. Desktop needs overflow visible for sticky to work. */
   @media (max-width: 899px) {
     html, body { overflow-x: hidden; }
   }
   body {
+    @apply antialiased;
     font-family: 'Calibri', 'Carlito', 'Trebuchet MS', 'Segoe UI', sans-serif;
-    background: #F5F3EC;
+    background: #f5f3ec;
     color: #1a1a1a;
     line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
   }
 
   :root {
@@ -52,26 +97,19 @@
     --brand-maroon: #822049;
   }
 
+}
+
+@layer components {
   /* STATE SWITCHER */
   .state-switcher {
-    position: fixed;
-    top: 8px;
-    right: 8px;
-    z-index: 200;
-    background: rgba(26,26,26,0.95);
+    @apply fixed top-2 right-2 z-[200] max-w-[180px] p-2 text-[10px] text-white;
+    background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(10px);
-    color: #fff;
-    padding: 8px;
     border-radius: var(--r-md);
-    font-size: 10px;
-    max-width: 180px;
   }
   .state-switcher-title {
-    font-size: 9px;
+    @apply mb-1.5 text-[9px] uppercase opacity-60;
     letter-spacing: 0.5px;
-    opacity: 0.6;
-    margin-bottom: 6px;
-    text-transform: uppercase;
   }
   .state-switcher select {
     width: 100%;
@@ -87,12 +125,8 @@
 
   /* APP FRAME */
   .app {
-    max-width: 430px;
-    margin: 0 auto;
+    @apply relative mx-auto min-h-screen max-w-[430px] pb-[110px];
     background: var(--ss-cream);
-    min-height: 100vh;
-    position: relative;
-    padding-bottom: 110px;
   }
 
   /* TOP BAR */
@@ -2495,3 +2529,5 @@ h1 em, h2 em, h3 em, h4 em,
 .tier-gold     { background: linear-gradient(135deg, #faf2d6, #F2D98C) !important; color: #9a7820 !important; }
 .tier-platinum { background: linear-gradient(135deg, #4f7134, #3d5a26) !important; color: #F2D98C !important; border: 1px solid #F2D98C !important; }
 
+
+}
